@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>My Hobbies</h2>
+<ul>
+  {% for hobby in hobbies %}
+    <li>
+      <img src="{{ hobby.image }}" alt="{{ hobby.name }}" width="150">
+      <p><strong>{{ hobby.name }}</strong>: {{ hobby.description }}</p>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}
