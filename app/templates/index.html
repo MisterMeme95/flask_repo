@@ -18,7 +18,12 @@
     <link rel='icon' href='./static/img/favicon.ico' type='image/x-icon' />
     <title>{{ title }}</title>
 </head>
-
+<nav>
+  {% set pages = [("Home", "/"), ("Work", "/work"), ("Education", "/education"), ("Hobbies", "/hobbies"), ("Map", "/locations")] %}
+  {% for name, link in pages %}
+    <a href="{{ link }}">{{ name }}</a>
+  {% endfor %}
+</nav>
 <body>
     <header class="nav-bar">
         <div class="nav-content">
@@ -32,7 +37,7 @@
 
     <div class="profile">
         <div id="profile-picture" class="profile-picture">
-            <img src="./static/img/logo.jpg">
+            <img src="./static/img/Jon.jpg">
         </div>
         <h1>{{ title }}</h1>
     </div>
