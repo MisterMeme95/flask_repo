@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+{% block content %}
+<h2>{{ section_title }}</h2>
+<ul>
+  {% for item in items %}
+    <li>
+      {% if item.image %}
+        <img src="{{ item.image }}" alt="{{ item.name }}" width="100">
+      {% endif %}
+      <strong>{{ item.name or item.role or item.school }}</strong>
+      {% if item.company or item.degree %}
+        – {{ item.company or item.degree }}
+      {% endif %}
+      {% if item.year %}
+        ({{ item.year }})
+      {% endif %}
+      <br>{{ item.description }}
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}
