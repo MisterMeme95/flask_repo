@@ -30,6 +30,7 @@ def work():
     work_data = [
         {"role": "Software Intern", "company": "Los Alamos National Lab", "year": "2025", "description": "Working on Physics Simulations"},
         {"role": "Tech Fellow", "company": "CodePath", "year": "2025", "description": "Teacher aid for techical interviews."}
+
     ]
     return render_template("list_section.html", section_title="Work Experience", items=work_data)
 
@@ -49,3 +50,4 @@ def locations():
         {"name": "Mexico", "image": "/static/img/mexico.jpg"},
     ]
     return render_template("locations.html", locations=locations, title="Map")
+

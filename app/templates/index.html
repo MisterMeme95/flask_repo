@@ -17,7 +17,12 @@
     <link rel='icon' href="{{ url_for('static', filename='img/favicon.ico') }}" type='image/x-icon' />
     <title>{{ title }}</title>
 </head>
-
+<nav>
+  {% set pages = [("Home", "/"), ("Work", "/work"), ("Education", "/education"), ("Hobbies", "/hobbies"), ("Map", "/locations")] %}
+  {% for name, link in pages %}
+    <a href="{{ link }}">{{ name }}</a>
+  {% endfor %}
+</nav>
 <body>
     <nav>
         {% set pages = [("Home", "/"), ("Work", "/work"), ("Education", "/education"), ("Hobbies", "/hobbies"), ("Map", "/locations")] %}
