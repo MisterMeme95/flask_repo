@@ -14,12 +14,12 @@ def hobbies():
     hobbies = [
         {
             "name": "Gaming",
-            "description": "Competitive and casual gaming sessions",
-            "image": "/static/img/gaming.jpg"
+            "description": "Competitive and casual gaming sessions. Jak and Daxter (pictured below) is my favorite game.",
+            "image": "/static/img/game.jpg"
         },
         {
             "name": "Anime",
-            "description": "I watch anime and discuss lore with friends",
+            "description": "I watch anime and discuss lore with friends. Naturally, I think Dragonball is the best.",
             "image": "/static/img/anime.jpg"
         },
     ]
@@ -28,14 +28,24 @@ def hobbies():
 @app.route('/work')
 def work():
     work_data = [
-        {"role": "Software Intern", "company": "TechCorp", "year": "2024", "description": "Built backend APIs"},
-        {"role": "RA", "company": "Univ Lab", "year": "2023", "description": "Worked on ML models"}
+        {"role": "Software Intern", "company": "Los Alamos National Lab", "year": "2025", "description": "Working on Physics Simulations"},
+        {"role": "Tech Fellow", "company": "CodePath", "year": "2025", "description": "Teacher aid for techical interviews."}
     ]
     return render_template("list_section.html", section_title="Work Experience", items=work_data)
 
 @app.route('/education')
 def education():
     education_data = [
-        {"school": "ABC University", "degree": "CS B.Sc.", "year": "2020–2024", "description": "Focus on AI"},
+        {"school": "Florida International Univerisity", "degree": "Masters in Computer Science", "year": "2020–2026", "description": "I want to focus on visualization."},
     ]
     return render_template("list_section.html", section_title="Education", items=education_data)
+
+
+@app.route('/locations')
+def locations():
+    locations = [
+        {"name": "Los Alamos, New Mexico", "image": "/static/img/losalamos.jpg"},
+        {"name": "Miami, Florida", "image": "/static/img/miamiflorida.jpg"},
+        {"name": "Mexico", "image": "/static/img/mexico.jpg"},
+    ]
+    return render_template("locations.html", locations=locations, title="Map")
