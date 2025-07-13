@@ -1,3 +1,63 @@
-@app.route('/timeline')
-def timeline():
-	return render_template('timeline.html', title="Timeline")
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <script>
+        async function submitForm(event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const formData = new FormData(form);
+
+            const response = await fetch("/api/timeline_post", {
+                method: "POST",
+                body: formData
+            });
+
+            if (response.ok) {
+                form.reset(); // clear the form
+                await fetchAndRenderPosts(); // re-render posts
+            } else {
+                console.error("Post failed.");
+            }
+        }
+
+        async function fetchAndRenderPosts() {
+            try {
+                const response = await fetch("/api/timeline_post");
+                const data = await response.json();
+                const container = document.getElementById("posts-container");
+
+                container.innerHTML = "";
+
+                data.timeline_posts.forEach(post => {
+                    const li = document.createElement("li");
+                    li.innerHTML = `
+                        <strong>${post.name}</strong> (${post.email})<br>
+                        ${post.content}<br>
+                        <em>${post.created_at}</em>
+                    `;
+                    container.appendChild(li);
+                });
+            } catch (error) {
+                console.error("Failed to fetch posts:", error);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", fetchAndRenderPosts);
+    </script>
+</head>
+<body>
+    <h1>Timeline</h1>
+
+    <form onsubmit="submitForm(event)">
+        <input type="text" name="name" placeholder="Name" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <textarea name="content" placeholder="Your timeline post..." required></textarea><br>
+        <button type="submit">Post</button>
+    </form>
+
+    <h2>Posts</h2>
+    <ul id="posts-container"></ul>
+</body>
+</html>
