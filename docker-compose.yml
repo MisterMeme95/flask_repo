@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  myportfolio:
+    container_name: myportfolio
+    build: .
+    restart: always
+    env_file:
+      - app/.env
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=app
+      - TESTING=true
+      - MYSQL_HOST=mysql  # critical fix: this must match the service name of the DB
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/myportfolio
+    depends_on:
+      - mysql
+
+  mysql:
+    container_name: mysql
+    image: mariadb:10.5
+    restart: always
+    env_file:
+      - app/.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=myportfoliodb
+      - MYSQL_USER=myportfolio
+      - MYSQL_PASSWORD=#Mypassword123
+      - MYSQL_ROOT_HOST=%  # 🔥 critical fix: allow connections from any container
+    volumes:
+      - mydatabase:/var/lib/mysql
+
+volumes:
+  mydatabase:
+
