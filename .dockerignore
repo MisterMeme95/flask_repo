@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+python3-virtualenv/
+env/
+venv/
+*.db
+*.log
+.DS_Store
+.git
+.gitignore
