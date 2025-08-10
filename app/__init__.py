@@ -63,7 +63,7 @@ def work():
     work_data = [
         {"role": "Software Intern", "company": "Los Alamos National Lab", "year": "2025", "description": "Working on Physics Simulations"},
         {"role": "Tech Fellow", "company": "CodePath", "year": "2025", "description": "Teacher aid for techical interviews."},
-        {"role": "MLH Fellow", "company": "MLH", "year": "2025", "description": "Fellowship for production engineering."}
+        {"role": "MLH Fellow", "company": "MLH", "year": "2025", "description": "Fellowship for production engineering. This is where my journey as an elite production engineer begins!"}
 
     ]
     return render_template("list_section.html", section_title="Work Experience", items=work_data)
