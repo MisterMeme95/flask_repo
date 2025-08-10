@@ -35,11 +35,11 @@ jobs:
       - name: Notify Discord – success
         if: ${{ success() }}
         run: |
-          curl -s -X POST "$${{ secrets.DISCORD_WEBHOOK }}" \
+          curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" \
             -d '{"content":"🚀 Deployment Successful"}'
 
       - name: Notify Discord – failure
         if: ${{ failure() }}
         run: |
-          curl -s -X POST "$ {{ secrets.DISCORD_WEBHOOK }}" \
+          curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" \
             -d '{"content":"🚨 Deployment Failed"}'
