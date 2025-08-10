@@ -19,7 +19,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.14.0-rc.1'
+          python-version: 'python-3.12.11-linux-22.04-arm64.tar.gz'
 
       - name: Setup Python Virtual Environment
         run: python -m venv python3-virtualenv
